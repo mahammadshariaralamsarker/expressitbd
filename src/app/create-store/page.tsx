@@ -41,7 +41,7 @@ const CreateForm: React.FC = () => {
   ];
 
   return (
-    <div className="w-full flex justify-center items-center lg:mt-10   lg:p-16  ">
+    <div className="w-full flex justify-center items-center     ">
       <Form
         form={form}
         name="storeCreation"
@@ -124,8 +124,7 @@ const CreateForm: React.FC = () => {
             />
           </div>
         </div>
-
-        {/* Store Category */}
+ 
         <div className="flex flex-wrap md:flex-nowrap justify-between   lg:mt-4">
           <div className="w-full md:w-1/2">
             <div className="flex">
@@ -147,8 +146,7 @@ const CreateForm: React.FC = () => {
             />
           </div>
         </div>
-
-        {/* Store Currency */}
+ 
         <div className="flex flex-wrap md:flex-nowrap justify-between   lg:mt-4">
           <div className="w-full md:w-1/2">
             <div className="flex">
@@ -170,8 +168,7 @@ const CreateForm: React.FC = () => {
             />
           </div>
         </div>
-
-        {/* Store Contact Email */}
+ 
         <div className="flex flex-wrap md:flex-nowrap justify-between   lg:mt-4">
           <div className="w-full md:w-1/2">
             <div className="flex">
@@ -189,10 +186,8 @@ const CreateForm: React.FC = () => {
               rules={[{ required: true, message: "Please enter store email!" }]}
             />
           </div>
-        </div>
-
-        {/* Submit Button */}
-        <Form.Item className="mb-0 mt-6">
+        </div> 
+        <Form.Item className="mb-0 lg:mt-6">
           <Button type="primary" htmlType="submit" className="w-full  ">
             Create Store
           </Button>

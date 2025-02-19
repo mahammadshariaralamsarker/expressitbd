@@ -28,11 +28,13 @@ const ProductsPage = () => {
   }, []);
 
   return (
-    <div >
-      <Link className="flex justify-end" href="/create-store">
-        Create-Store
-      </Link>
-      <div className="grid lg:grid-cols-3 gap-4 md:grid-cols-2 sm:grid-cols-1">
+    <div>
+      <div className=" bg-[#468585] text-white m-5">
+        <Link className="p-6 w-1/6 text-center my-5" href="/create-store">
+          Create-Store
+        </Link>
+      </div>
+      <div className="grid lg:grid-cols-3 gap-4 md:grid-cols-2 sm:grid-cols-1 ">
         {products.map((item) => (
           <ProductCard product={item} key={item._id} />
         ))}
