@@ -4,6 +4,16 @@ import { useEffect, useState } from "react";
 import ProductCard from "@/components/product/ProductCard";
 import Link from "next/link";
 
+import { Carousel } from "antd";
+const contentStyle: React.CSSProperties = {
+  margin: 0,
+  height: "160px",
+  color: "#fff",
+  lineHeight: "160px",
+  textAlign: "center",
+  background: "#364d79",
+};
+
 const ProductsPage = () => {
   const [products, setProducts] = useState([]);
 
@@ -35,7 +45,6 @@ const ProductsPage = () => {
         </Link>
       </div>
       <div className="grid lg:grid-cols-4 gap-16 md:grid-cols-2 sm:grid-cols-1 ">
-        
         {products.map((item) => (
           <ProductCard product={item} key={item._id} />
         ))}
