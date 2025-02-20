@@ -13,7 +13,7 @@ const ProductCard = ({ product }) => {
         <div className="absolute flex justify-between bottom-0 w-full bg-black bg-opacity-30 rounded-lg text-white  p-3">
           <h2 className="text-lg font-semibold truncate px-2 flex items-center opacity-90">{product.name  }</h2>
           <Link href={`/product/${product._id}`}>
-          <button className=" w-full bg-[#b46565dd] text-[#fdfdfdfa] px-4 py-2 rounded-md hover:bg-[#ff6767] transition-all duration-300  te">
+          <button className=" w-full bg-[#b46565dd] text-[#fdfdfdfa] px-4 py-2 rounded-md hover:bg-[#ff6767] transition-all duration-300  ">
             View Details
           </button>
         </Link>

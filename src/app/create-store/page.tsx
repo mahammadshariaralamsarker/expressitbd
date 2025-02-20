@@ -1,6 +1,6 @@
 "use client";
 import React, { useState } from "react";
-import { Form, Button, Divider } from "antd";
+import { Form, Divider } from "antd";
 import {
   DeploymentUnitOutlined,
   DesktopOutlined,
@@ -8,7 +8,7 @@ import {
   EuroCircleOutlined,
   MailOutlined,
   RiseOutlined,
-} from "@ant-design/icons"; 
+} from "@ant-design/icons";
 import EXInput from "@/components/utils/EXInput";
 import EXSelect from "@/components/utils/EXSelect";
 
@@ -20,9 +20,30 @@ const CreateForm: React.FC = () => {
     setSubdomain(e.target.value);
   };
 
-  const onFinish = (values: any) => {
+  const onFinish = async (values: any) => {
     console.log("Success:", values);
+    const modifieddata = {
+...values,
+    }
     // Handle form submission here (e.g., API call)
+    const res = await fetch(
+      "https://interview-task-green.vercel.app/task/domains/check/uniquedomain.expressitbd.com"
+    );
+    const response = await res.json();
+    console.log(response);
+    if (response?.succcess == true) {
+      const response = await fetch("https://interview-task-green.vercel.app/task/stores/create", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(values),
+      });
+
+      const data = await response.json();
+      console.log('object');
+      console.log(data);
+    }
   };
 
   const countryOptions: { value: string; label: string }[] = [
@@ -41,7 +62,7 @@ const CreateForm: React.FC = () => {
   ];
 
   return (
-    <div className="w-full flex justify-center items-center     ">
+    <div className="w-full flex justify-center items-center bg-[#0c0517]    ">
       <Form
         form={form}
         name="storeCreation"
@@ -124,7 +145,7 @@ const CreateForm: React.FC = () => {
             />
           </div>
         </div>
- 
+
         <div className="flex flex-wrap md:flex-nowrap justify-between   lg:mt-4">
           <div className="w-full md:w-1/2">
             <div className="flex">
@@ -146,7 +167,7 @@ const CreateForm: React.FC = () => {
             />
           </div>
         </div>
- 
+
         <div className="flex flex-wrap md:flex-nowrap justify-between   lg:mt-4">
           <div className="w-full md:w-1/2">
             <div className="flex">
@@ -168,7 +189,7 @@ const CreateForm: React.FC = () => {
             />
           </div>
         </div>
- 
+
         <div className="flex flex-wrap md:flex-nowrap justify-between   lg:mt-4">
           <div className="w-full md:w-1/2">
             <div className="flex">
@@ -186,11 +207,14 @@ const CreateForm: React.FC = () => {
               rules={[{ required: true, message: "Please enter store email!" }]}
             />
           </div>
-        </div> 
-        <Form.Item className="mb-0 lg:mt-6">
-          <Button type="primary" htmlType="submit" className="w-full  ">
+        </div>
+        <Form.Item className="mb-0 lg:mt-6 sm:mt-4">
+          <button
+            type="submit"
+            className="w-full  bg-[#b46565dd] text-white font-semibold text-sm   px-4 py-2 rounded-md hover:bg-[#e34b4b]"
+          >
             Create Store
-          </Button>
+          </button>
         </Form.Item>
       </Form>
     </div>

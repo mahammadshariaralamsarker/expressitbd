@@ -20,7 +20,7 @@ const EXInput: React.FC<EXInputProps> = ({
   ...rest
 }) => {
   return (
-    <Form.Item className="w-full " name={name} label={label} rules={rules}>
+    <Form.Item className="w-full pt-5" name={name} label={label} rules={rules}>
       <Input
         placeholder={placeholder}
         onChange={onChange}

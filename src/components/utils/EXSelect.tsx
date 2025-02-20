@@ -25,7 +25,7 @@ const EXSelect: React.FC<EXSelectProps> = ({
   ...rest
 }) => {
   return (
-    <Form.Item className="w-full" name={name} label={label} rules={rules}>
+    <Form.Item className="w-full pt-5" name={name} label={label} rules={rules}>
       <Select placeholder={placeholder} {...rest}>
         {options.map((option) => (
           <Option key={option.value} value={option.value}>
