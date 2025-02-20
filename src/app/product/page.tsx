@@ -34,7 +34,8 @@ const ProductsPage = () => {
           Create-Store
         </Link>
       </div>
-      <div className="grid lg:grid-cols-3 gap-4 md:grid-cols-2 sm:grid-cols-1 ">
+      <div className="grid lg:grid-cols-4 gap-16 md:grid-cols-2 sm:grid-cols-1 ">
+        
         {products.map((item) => (
           <ProductCard product={item} key={item._id} />
         ))}
