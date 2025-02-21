@@ -1,17 +1,19 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { useParams } from "next/navigation";
+import { useParams } from "next/navigation"
+import Head from "next/head";
+import { IProduct } from "@/types";
 
 const ProductCardDetails = () => {
   const { productId } = useParams();
-  const [product, setProduct] = useState(null);
+  const [product, setProduct] = useState<IProduct| null>(null);
 
   useEffect(() => {
     const savedProducts = localStorage.getItem("products");
     if (savedProducts) {
       const products = JSON.parse(savedProducts);
-      const foundProduct = products.find((product) => product._id === productId);
+      const foundProduct = products.find((product:IProduct) => product._id === productId);
       setProduct(foundProduct);
     }
   }, [productId]);
@@ -20,6 +22,10 @@ const ProductCardDetails = () => {
 
   return (
     <div className="h-screen w-11/12 mx-auto shadow-md p-2">
+      <Head>
+        <title>Express It BD | {product?.name}</title>
+        <meta name="description" content={product?.description || "Product details page"} />
+      </Head>
       <div className="lg:flex"> 
         <div className="lg:w-2/5 w-full h-screen">
           <iframe
