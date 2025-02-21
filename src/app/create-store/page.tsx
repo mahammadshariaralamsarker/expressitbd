@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React from "react";
 import { Form, Divider } from "antd";
 import {
   DeploymentUnitOutlined,
@@ -11,38 +11,39 @@ import {
 } from "@ant-design/icons";
 import EXInput from "@/components/utils/EXInput";
 import EXSelect from "@/components/utils/EXSelect";
+import { TValues } from "@/types";
+
+
 
 const CreateForm: React.FC = () => {
   const [form] = Form.useForm();
-  const [subdomain, setSubdomain] = useState<string>("");
 
-  const onSubdomainChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setSubdomain(e.target.value);
-  };
-
-  const onFinish = async (values: any) => {
-    console.log("Success:", values);
+  const onFinish = async (values: TValues) => { 
     const modifieddata = {
-...values,
-    }
-    // Handle form submission here (e.g., API call)
+      ...values,
+      domain: values?.domain?.replace(/\s/g, "").toLowerCase(),
+    };
     const res = await fetch(
       "https://interview-task-green.vercel.app/task/domains/check/uniquedomain.expressitbd.com"
     );
     const response = await res.json();
-    console.log(response);
     if (response?.succcess == true) {
-      const response = await fetch("https://interview-task-green.vercel.app/task/stores/create", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(values),
-      });
+      const response = await fetch(
+        "https://interview-task-green.vercel.app/task/stores/create",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(modifieddata),
+        }
+      );
 
       const data = await response.json();
-      console.log('object');
       console.log(data);
+      if (data.succcess) {
+        alert("Store Created Successfully ");
+      }
     }
   };
 
@@ -115,7 +116,6 @@ const CreateForm: React.FC = () => {
               rules={[
                 { required: true, message: "Please enter store subdomain!" },
               ]}
-              onChange={onSubdomainChange}
               addonAfter={
                 <span className="bg-gray-100 rounded">expressitbd.com</span>
               }

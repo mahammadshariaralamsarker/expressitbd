@@ -1,6 +1,8 @@
 import Link from "next/link";
 
-const ProductCard = ({ product }) => {
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+const ProductCard = ({ product }:any) => {
+  console.log(product);
   return (
     <div className="border h-[450px] w-72 shadow-lg rounded-lg bg-[#e8d2d2] overflow-hidden">
       {/* Image Section */}

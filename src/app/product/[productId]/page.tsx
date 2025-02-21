@@ -34,7 +34,7 @@ const ProductCardDetails = () => {
         </div>
  
         <div className="relative flex-1 p-9 h-screen text-[#fefdff]">
-          {/* Background Overlay */}
+  
           <div
             className="absolute inset-0 bg-black opacity-60"
             style={{
@@ -49,10 +49,8 @@ const ProductCardDetails = () => {
               <h1 className="text-3xl">{product?.name}</h1>
             </div>
             <p className="text-lg font-bold mt-2">{product?.description}</p>
-
             <p className="text-lg font-semibold mt-4">Category: {product?.category?.name}</p>
             <p className="text-lg font-semibold mt-4">Price: ${product?.price}</p>
-
             <button className="mt-4 bg-[#b46565dd] text-[#fdfdfdfa] px-4 py-2 rounded-md hover:bg-[#ff6767] transition-all duration-300">
               Buy Now
             </button>
